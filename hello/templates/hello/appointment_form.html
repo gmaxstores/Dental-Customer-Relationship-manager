@@ -1,0 +1,13 @@
+{% extends "hello/layout.html" %}
+{% block title %}
+Appointment Form
+{% endblock %}
+{% block content %}
+<h1>Add Appointment</h1>
+    <form method="post">
+    {% csrf_token %}
+    <input name="dentist" placeholder="Dentist name" required />
+    <input type="datetime-local" name="date" required />
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

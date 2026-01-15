@@ -1,0 +1,24 @@
+{% extends "hello/layout.html" %}
+{% block title %}
+Delete Appointment
+{% endblock %}
+{% block content %}
+<h1>Delete Appointment</h1>
+
+<p>
+  Are you sure you want to delete this appointment?
+</p>
+
+<ul>
+  <li>Dentist: {{ appointment.dentist }}</li>
+  <li>Date: {{ appointment.date }}</li>
+  <li>Status: {{ appointment.status }}</li>
+</ul>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Yes, delete</button>
+  <a href="{% url 'patient_detail' appointment.patient_id %}">Cancel</a>
+</form>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "hello/layout.html" %}
+{% block title %}
+Dashboard
+{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<section class="total-patients">
+    <p>Total Patients: {{ patients_count }}</p>
+    <a href="{% url 'patient_list' %}">View Patients</a>
+</section>
+<section class="patients-appointments">
+    <h2>Upcoming Appointments</h2>
+    <ul>
+    {% for appt in upcoming_appointments %}
+        <li>{{ appt.date }} – {{ appt.patient_first_name }} {{ appt.patient_last_name }} ({{ appt.dentist }})</li>
+    {% empty %}
+        <li>No upcoming appointments</li>
+    {% endfor %}
+    </ul>
+</section>
+
+{% endblock %}

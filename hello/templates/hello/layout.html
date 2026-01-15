@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'hello/site.css' %}"/>
+</head>
+
+<body>
+<header class="navbar">
+    <a href="{% url 'dashboard' %}" class="navbar-brand">Dashboard</a>
+</header>
+
+<main class="body-content">
+    {% block content %}
+    {% endblock %}
+    <hr/>
+</main>
+<footer>
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        {% if request.user.staffprofile.role%}
+        <button type="submit">Logout</button>
+        {% endif %}
+    </form>
+    {% if request.user.staffprofile.role == "admin" %}
+    <p>
+        <a href="/admin/" target="_blank">Admin Panel</a>
+    </p>
+{% endif %}
+    <p>&copy; 2026</p>
+</footer>
+</body>
+</html>

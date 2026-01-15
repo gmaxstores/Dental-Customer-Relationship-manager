@@ -1,0 +1,18 @@
+{% extends "hello/layout.html" %}
+{% block title %}
+Patient List
+{% endblock %}
+{% block content %}
+<h1>Patients</h1>
+<a href="{% url 'patient_create' %}">Add Patient</a>
+<ul>
+{% for patient in patients %}
+<li>
+<a href="{% url 'patient_detail' patient.id %}">
+{{ patient.first_name }} {{ patient.last_name }}
+</a>
+|<a class="delete-link" href="{% url 'patient_delete' patient.id %}">Delete</a>
+</li>
+{% endfor %}
+</ul>
+{% endblock %}

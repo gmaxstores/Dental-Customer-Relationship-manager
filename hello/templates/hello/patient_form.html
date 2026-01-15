@@ -1,0 +1,15 @@
+{% extends "hello/layout.html" %}
+{% block title %}
+Patient Form
+{% endblock %}
+{% block content %}
+<h1>Add Patient</h1>
+<form method="post">
+    {% csrf_token %}
+    <input name="first_name" placeholder="First name" required />
+    <input name="last_name" placeholder="Last name" required />
+    <input name="phone" placeholder="Phone" required />
+    <input name="email" placeholder="Email" />
+    <button type="submit">Save</button>
+</form>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "hello/layout.html" %}
+{% block title %}
+Patient Details
+{% endblock %}
+{% block content %}
+<h1>{{ patient.first_name }} {{ patient.last_name }}</h1>
+<p>Phone: {{ patient.phone }}</p>
+<p>Email: {{ patient.email }}</p>
+
+
+<h2>Appointments</h2>
+{% if request.user.staffprofile.role != "dentist" %}
+  <a href="{% url 'appointment_create' patient.id %}">Add Appointment</a>
+{% endif %}
+<ul>
+{% for appt in appointments %}
+<li>{{ appt.date }} – {{ appt.status }} ({{ appt.dentist }}) | {% if request.user.staffprofile.role != "dentist" %}
+    | <a href="{% url 'edit_appointment' appt.id %}">Edit</a>
+  {% endif %} | {% if request.user.staffprofile.role != "dentist" %} <a href="{% url 'delete_appointment' appt.id %}">Delete</a>{% endif %}</li>
+{% empty %}
+<li>No appointments</li>
+{% endfor %}
+</ul>
+{% endblock %}
