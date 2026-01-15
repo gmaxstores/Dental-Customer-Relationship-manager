@@ -3,17 +3,36 @@
 This is a simple Customer Relationship Management software for a dental clinic.
 
 I've created a dashboard where staffs can have access to and manage patient data. Used django authentication
+
+
 Staff roles include: dentist, receptionist and admin
+
+
 Functionalities include managing patients and patient appointments.
-Each role has specific capabilities
+
+
+Each role has specific capabilities:
+
 --Dentist can only view
+
 --Receptionist can create patients and appointments as well as delete appointments
+
 -- Admin can do everything including deleting patients
+
+
 I've also activated the admin page where staffs can be managed.
+
+
 I've created two staffProfiles to aid sampling - receptionist and dentist.
 Only staffs can log in to access the dashboard.
+
+
 Use any of the staff profiles above to login.
+
+
 Password is qwerty54321
+
+
 I integrated the software with google firebase where the patients data and appointments are stored. The appoinment table has a many-to-one relationship with the patients table in firebase. While dbSQLite is used for storing staff profiles.
 
 I also created a superuser to aid sampling :
@@ -23,7 +42,6 @@ Only admins can access the admin panel
 
 To use the software, simply login with any of the staff profiles above explore all the functionalities.
 
-{Provide a description of the software that you wrote and how it integrates with a Cloud Database. Describe how to use your program.}
 
 I developed this software to help dental clinics manage patients effectively and improve patient communication and appointmnets.
 
