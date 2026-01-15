@@ -15,7 +15,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from .permissions import is_admin, is_receptionist
 
-
+# view for the dashboard
 @login_required
 def dashboard(request):
     patients = get_patients()
@@ -26,7 +26,7 @@ def dashboard(request):
     })
 
 
-
+#view for listing patients
 @login_required
 def patient_list(request):
     patients = get_patients()
@@ -35,7 +35,8 @@ def patient_list(request):
     })
 
 
-
+#view for creating a new patient
+#Route protected to only allow admin and receptionist roles
 @login_required
 def patient_create(request):
     if not (is_admin(request.user) or is_receptionist(request.user)):
@@ -53,7 +54,7 @@ def patient_create(request):
     return render(request, 'hello/patient_form.html')
 
 
-
+#view for patient details
 @login_required
 def patient_detail(request, patient_id):
     patient = get_patient(patient_id)
@@ -66,7 +67,8 @@ def patient_detail(request, patient_id):
     })
 
 
-
+#view for creating an appointment for a patient
+#Route protected to allow only receptionist role
 @login_required
 def appointment_create(request, patient_id):
     if not (is_receptionist(request.user)):
@@ -85,6 +87,8 @@ def appointment_create(request, patient_id):
         'patient_id': patient_id
     })
 
+#view for editing an appointment
+#Route protected to allow only receptionist role
 @login_required
 def edit_appointment(request, appointment_id):
     if not (is_receptionist(request.user)):
@@ -104,6 +108,8 @@ def edit_appointment(request, appointment_id):
         'appointment': appointment
     })
 
+#view for deleting an appointment
+##Route protected to allow only receptionist role and admin role
 @login_required
 def delete_appointment_view(request, appointment_id):
     if not (is_admin(request.user) or is_receptionist(request.user)):
@@ -124,6 +130,8 @@ def delete_appointment_view(request, appointment_id):
         "appointment": appointment
     })
 
+#view for deleting a patient
+#route protected to allow only admin role
 @login_required
 def patient_delete(request, patient_id):
     if not (is_admin(request.user)):

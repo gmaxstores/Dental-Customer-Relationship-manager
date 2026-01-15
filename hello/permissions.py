@@ -1,3 +1,4 @@
+#created to define permission checks based on user roles
 def is_admin(user):
     return user.staffprofile.role == "admin"
 

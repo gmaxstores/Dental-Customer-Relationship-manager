@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# Model to extend the User model with staff roles
 class StaffProfile(models.Model):
     ROLE_CHOICES = [
         ("admin", "Admin"),
