@@ -47,7 +47,7 @@ I developed this software to help dental clinics manage patients effectively and
 
 
 
-[Software Demo Video]([https://www.loom.com/share/f0ef127cd74a444b96632fddacfbd235])
+[Software Demo Video](http://youtube.link.goes.here)
 
 # Cloud Database
 
